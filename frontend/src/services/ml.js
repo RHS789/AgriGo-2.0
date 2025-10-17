@@ -5,14 +5,16 @@ const FALLBACK = [
 ];
 
 export async function getRecommendations(userId) {
-  const url = import.meta.env.VITE_ML_API_URL;
-  if (!url) return FALLBACK;
+  const url = import.meta.env.VITE_ML_API_URL || '';
+  const endpoint = url ? `${url}/recommendations?user=${encodeURIComponent(userId)}` : `/ml/recommendations?user=${encodeURIComponent(userId)}`;
   try {
-    const res = await fetch(`${url}/recommendations?user=${encodeURIComponent(userId)}`);
+    const res = await fetch(endpoint);
     if (!res.ok) throw new Error('ML API error');
     const data = await res.json();
     return Array.isArray(data) ? data : FALLBACK;
-  } catch {
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.warn('ML fetch failed:', err && err.message ? err.message : err);
     return FALLBACK;
   }
 }
