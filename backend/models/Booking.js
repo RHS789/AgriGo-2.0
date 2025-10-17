@@ -1,8 +1,6 @@
 const supabase = require('../config/supabase');
 const { v4: uuidv4 } = require('uuid');
 
-const supabase = require('../config/supabase');
-
 class Booking {
   // Create a new booking
   static async create(bookingData) {
@@ -55,9 +53,15 @@ class Booking {
         .eq('farmer_id', userId)
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        // Handle case where table doesn't exist yet
+        if (error.code === 'PGRST116') {
+          return [];
+        }
+        throw error;
+      }
 
-      return data;
+      return data || [];
     } catch (error) {
       throw error;
     }
@@ -121,9 +125,15 @@ class Booking {
         .eq('resources.provider_id', providerId)
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        // Handle case where table doesn't exist yet
+        if (error.code === 'PGRST116') {
+          return [];
+        }
+        throw error;
+      }
 
-      return data;
+      return data || [];
     } catch (error) {
       throw error;
     }

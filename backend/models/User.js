@@ -1,7 +1,5 @@
 const supabase = require('../config/supabase');
 
-const supabase = require('../config/supabase');
-
 class User {
   // Create a new user in the database
   static async create(userData) {
