@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiStar, FiTrendingUp, FiBolt } from 'react-icons/fi';
+import { FiStar, FiTrendingUp, FiZap } from 'react-icons/fi';
 import { getRecommendations } from '../../services/ml.js';
 import { getAuth } from '../../store/authStore.js';
 
