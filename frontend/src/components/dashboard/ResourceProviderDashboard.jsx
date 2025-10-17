@@ -39,7 +39,7 @@ export default function ResourceProviderDashboard() {
       color: 'emerald',
     },
     {
-      icon: FiBarChart3,
+      icon: FiBarChart2,
       label: 'My Resources',
       href: '/resources',
       color: 'blue',
