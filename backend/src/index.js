@@ -108,6 +108,7 @@ app.use('/auth', authRoutes);
 app.use('/resources', resourceRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/chats', chatRoutes);
+app.use('/ml', mlRoutes);
 
 // 404 handler
 app.use((req, res) => {
