@@ -74,6 +74,22 @@ class User {
     }
   }
 
+  // Get user by email
+  static async getByEmail(email) {
+    try {
+      const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('email', email)
+        .single();
+
+      if (error && error.code !== 'PGRST116') throw error;
+      return data || null;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // Get user profile by ID
   static async getProfile(userId) {
     try {
