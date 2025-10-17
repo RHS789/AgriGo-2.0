@@ -1,14 +1,15 @@
 {
   "name": "agrigo-2.0",
   "version": "1.0.0",
-  "description": "AgriGo 2.0 Application",
+  "description": "AgriGo 2.0 Application - Agricultural Resource Sharing Platform",
   "main": "backend/src/index.js",
   "scripts": {
     "start": "node backend/src/index.js",
     "dev": "node backend/src/index.js",
-    "server": "node backend/src/index.js"
+    "server": "node backend/src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["agriculture", "resource-sharing", "booking", "chat"],
   "author": "",
   "license": "MIT",
   "dependencies": {
