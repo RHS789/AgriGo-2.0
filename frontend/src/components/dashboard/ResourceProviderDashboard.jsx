@@ -8,7 +8,7 @@ import DashboardFooter from './DashboardFooter.jsx';
 import ProviderBookings from './ProviderBookings.jsx';
 import ProviderStats from './ProviderStats.jsx';
 import { Link } from 'react-router-dom';
-import { FiPlus, FiBarChart3, FiCalendar } from 'react-icons/fi';
+import { FiPlus, FiBarChart2, FiCalendar } from 'react-icons/fi';
 
 export default function ResourceProviderDashboard() {
   const containerVariants = {
