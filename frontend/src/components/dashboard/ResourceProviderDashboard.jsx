@@ -9,6 +9,7 @@ import ProviderBookings from './ProviderBookings.jsx';
 import ProviderStats from './ProviderStats.jsx';
 import { Link } from 'react-router-dom';
 import { FiPlus, FiBarChart2, FiCalendar } from 'react-icons/fi';
+import DemoAccountButton from '../../components/common/DemoAccountButton.jsx';
 
 export default function ResourceProviderDashboard() {
   const containerVariants = {
