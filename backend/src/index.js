@@ -32,6 +32,18 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'AgriGo 2.0 Backend API',
+    version: '1.0.0',
+    status: 'running',
+    documentation: `http://localhost:${PORT}/api/docs`,
+    health: `http://localhost:${PORT}/health`
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({
