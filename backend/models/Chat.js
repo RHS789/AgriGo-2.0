@@ -1,6 +1,8 @@
 const { firebaseDB } = require('../config/firebase');
 const { v4: uuidv4 } = require('uuid');
 
+const { firebaseDB } = require('../config/firebase');
+
 class Chat {
   // Send a message
   static async sendMessage(messageData) {
