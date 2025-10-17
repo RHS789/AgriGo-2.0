@@ -1,5 +1,7 @@
 const admin = require('firebase-admin');
 
+const admin = require('firebase-admin');
+
 // Firebase configuration - Using service account credentials
 // For production, use environment variables instead
 const firebaseConfig = {
