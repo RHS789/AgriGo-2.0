@@ -8,6 +8,7 @@ const authRoutes = require('../routes/auth');
 const resourceRoutes = require('../routes/resources');
 const bookingRoutes = require('../routes/bookings');
 const chatRoutes = require('../routes/chats');
+const mlRoutes = require('../routes/ml');
 
 // Initialize Express app
 const app = express();
