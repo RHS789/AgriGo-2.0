@@ -1,6 +1,8 @@
 const supabase = require('../config/supabase');
 const { v4: uuidv4 } = require('uuid');
 
+const supabase = require('../config/supabase');
+
 class Resource {
   // Create a new resource
   static async create(resourceData) {
