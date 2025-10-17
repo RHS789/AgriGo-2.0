@@ -86,6 +86,9 @@ app.get('/api/docs', (req, res) => {
         sendMessage: 'POST /chats',
         getMessages: 'GET /chats/:booking_id',
         markAsRead: 'PUT /chats/:booking_id/read'
+      },
+      ml: {
+        getRecommendations: 'GET /ml/recommendations?user=<userId>'
       }
     }
   });
@@ -131,7 +134,7 @@ app.listen(PORT, () => {
 ║  Running on http://localhost:${PORT}            ║
 ║  Environment: ${process.env.NODE_ENV || 'development'}              ║
 ║  Timestamp: ${new Date().toISOString()}       ║
-╚═══════════════════════════════��═══════════════╝
+╚═══════════════════════════════��═════��═════════╝
   `);
 });
 
