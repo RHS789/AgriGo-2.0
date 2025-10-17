@@ -2,15 +2,24 @@
   "name": "agrigo-2.0",
   "version": "1.0.0",
   "description": "AgriGo 2.0 Application",
-  "main": "src/index.js",
+  "main": "backend/src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "node src/index.js"
+    "start": "node backend/src/index.js",
+    "dev": "node backend/src/index.js",
+    "server": "node backend/src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "@supabase/supabase-js": "^2.38.0",
+    "firebase": "^10.5.0",
+    "firebase-admin": "^12.0.0",
+    "jwt-decode": "^4.0.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "uuid": "^9.0.1"
   }
 }
