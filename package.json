@@ -1,0 +1,13 @@
+{
+  "name": "agrigo-2.0",
+  "version": "1.0.0",
+  "description": "AgriGo 2.0 Application",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
