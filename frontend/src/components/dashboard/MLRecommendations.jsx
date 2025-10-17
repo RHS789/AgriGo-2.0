@@ -42,7 +42,7 @@ export default function MLRecommendations() {
             animate={{ rotate: 360 }}
             transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
           >
-            <FiBolt className="text-amber-600 text-xl" />
+            <FiZap className="text-amber-600 text-xl" />
           </motion.div>
           <h3 className="font-semibold text-gray-900">⚡ AI Recommendations</h3>
         </div>
