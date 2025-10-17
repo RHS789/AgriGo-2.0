@@ -1,8 +1,6 @@
 const supabase = require('../config/supabase');
 const { v4: uuidv4 } = require('uuid');
 
-const supabase = require('../config/supabase');
-
 class Booking {
   // Create a new booking
   static async create(bookingData) {
