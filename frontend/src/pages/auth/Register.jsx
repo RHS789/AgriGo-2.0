@@ -2,17 +2,31 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { register as registerApi } from '../../services/auth.js';
 
+const roles = [
+  { key: 'farmer', label: 'Farmer' },
+  { key: 'resource_provider', label: 'Provider' }
+];
+
 export default function Register() {
-  const [form, setForm] = useState({ name: '', email: '', password: '', role: 'farmer' });
+  const [role, setRole] = useState('farmer');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); setError('');
+    setError('');
+    if (password !== confirm) {
+      setError('Passwords do not match');
+      return;
+    }
+    setLoading(true);
     try {
-      await registerApi(form);
+      const name = email.split('@')[0] || 'User';
+      await registerApi({ name, email, password, role });
       navigate('/login');
     } catch (err) {
       setError('Registration failed');
@@ -21,21 +35,30 @@ export default function Register() {
 
   return (
     <main className="page">
-      <div className="mx-auto max-w-md card">
+      <div className="mx-auto max-w-md card mt-16">
         <div className="card-body">
-          <h1 className="text-2xl font-semibold mb-4">Register</h1>
-          <form onSubmit={onSubmit} className="space-y-3">
-            <input className="input" placeholder="Full name" value={form.name} onChange={e=>setForm({...form, name: e.target.value})} required />
-            <input className="input" type="email" placeholder="Email" value={form.email} onChange={e=>setForm({...form, email: e.target.value})} required />
-            <input className="input" type="password" placeholder="Password" value={form.password} onChange={e=>setForm({...form, password: e.target.value})} required />
-            <select className="input" value={form.role} onChange={e=>setForm({...form, role: e.target.value})}>
-              <option value="farmer">Farmer</option>
-              <option value="resource_provider">Resource Provider</option>
-            </select>
+          <h1 className="text-3xl font-bold mb-6 text-gray-900">Sign Up</h1>
+
+          <div className="flex gap-2 mb-5">
+            {roles.map(r => (
+              <button
+                key={r.key}
+                type="button"
+                onClick={() => setRole(r.key)}
+                className={`tab ${role===r.key? 'tab-active' : ''}`}
+              >{r.label}</button>
+            ))}
+          </div>
+
+          <form onSubmit={onSubmit} className="space-y-4">
+            <input className="input" type="email" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} required />
+            <input className="input" type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} required />
+            <input className="input" type="password" placeholder="Confirm Password" value={confirm} onChange={e=>setConfirm(e.target.value)} required />
             {error && <p className="text-sm text-red-600">{error}</p>}
-            <button className="btn-primary w-full" disabled={loading}>{loading? 'Creating...' : 'Create Account'}</button>
+            <button className="btn-accent-green w-full text-white" disabled={loading}>{loading? 'Creating...' : 'Sign Up'}</button>
           </form>
-          <p className="mt-3 text-sm text-gray-600">Have an account? <Link to="/login" className="text-blue-600">Login</Link></p>
+
+          <p className="mt-4 text-sm text-gray-600 text-center">Already have an account? <Link to="/login" className="text-[#27ae60]">Log in</Link></p>
         </div>
       </div>
     </main>
