@@ -54,12 +54,12 @@ export default function FarmerDashboard() {
   ];
 
   return (
-    <main className="page space-y-6">
+    <main className="page space-y-4 sm:space-y-6">
       <DashboardTopBar />
 
       {/* Quick Actions */}
       <motion.div
-        className="grid gap-4 sm:grid-cols-3"
+        className="grid gap-2 sm:gap-4 grid-cols-1 sm:grid-cols-3"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -72,38 +72,52 @@ export default function FarmerDashboard() {
             purple: 'from-purple-400 to-purple-600',
           };
           return (
-            <Link
+            <motion.div
               key={action.href}
-              to={action.href}
-              className="card hover:shadow-lg transition-shadow"
+              whileHover={{ y: -4, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="card-body flex items-center gap-4">
-                <div className={`bg-gradient-to-br ${colors[action.color]} p-3 rounded-lg text-white`}>
-                  <Icon className="text-xl" />
+              <Link
+                to={action.href}
+                className="card hover:shadow-lg transition-all h-full"
+              >
+                <div className="card-body flex items-center gap-3 sm:gap-4">
+                  <div className={`bg-gradient-to-br ${colors[action.color]} p-2 sm:p-3 rounded-lg text-white flex-shrink-0`}>
+                    <Icon className="text-lg sm:text-xl" />
+                  </div>
+                  <p className="font-medium text-gray-900 text-sm sm:text-base">{action.label}</p>
                 </div>
-                <p className="font-medium text-gray-900">{action.label}</p>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           );
         })}
       </motion.div>
 
+      {/* Resource Stats - Full Width */}
       <motion.div
-        className="grid gap-6 lg:grid-cols-3"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <ResourceStats />
+      </motion.div>
+
+      {/* Main Grid - Responsive */}
+      <motion.div
+        className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-3"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Left Column - Main Content */}
-        <motion.div className="space-y-6 lg:col-span-2" variants={itemVariants}>
+        <motion.div className="space-y-4 sm:space-y-6 lg:col-span-2" variants={itemVariants}>
           <WeatherCard />
           <CropHealthChart />
           <MarketTrends />
         </motion.div>
 
-        {/* Right Column - Sidebar */}
-        <motion.div className="space-y-6" variants={itemVariants}>
-          <ResourceStats />
+        {/* Right Column - Sidebar (Stacks on mobile) */}
+        <motion.div className="space-y-4 sm:space-y-6 lg:col-span-1" variants={itemVariants}>
           <MLRecommendations />
           <ActivityTimeline />
           <CommunityTips />
