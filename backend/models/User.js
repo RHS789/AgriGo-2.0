@@ -1,5 +1,7 @@
 const supabase = require('../config/supabase');
 
+const supabase = require('../config/supabase');
+
 class User {
   // Create a new user in the database
   static async create(userData) {
@@ -12,7 +14,7 @@ class User {
 
     try {
       // Sign up user with Supabase Auth
-      const { data: authData, error: authError } = await supabase.auth.signUpWithPassword({
+      const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password
       });
