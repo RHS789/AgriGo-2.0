@@ -93,6 +93,11 @@ export default function ResourceProviderDashboard() {
         })}
       </motion.div>
 
+      {/* Demo Account Button */}
+      <div className="flex justify-center mt-3">
+        <DemoAccountButton role="resource_provider" />
+      </div>
+
       {/* Main Grid - Responsive */}
       <motion.div
         className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-3"
