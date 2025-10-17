@@ -1,7 +1,6 @@
-const supabaseLib = require('@supabase/supabase-js');
 const createClient = supabaseLib && (supabaseLib.createClient || (supabaseLib.default && supabaseLib.default.createClient));
 
-const supabaseLib = require('@supabase/supabase-js');
+
 const createClient = supabaseLib && (supabaseLib.createClient || (supabaseLib.default && supabaseLib.default.createClient));
 
 const supabaseUrl = process.env.SUPABASE_URL;
