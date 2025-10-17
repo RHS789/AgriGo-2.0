@@ -90,6 +90,18 @@ app.get('/api/docs', (req, res) => {
   });
 });
 
+// Mock Market endpoint for dashboard (replace with real API via VITE_MARKET_API_URL)
+app.get('/market/mock', (req, res) => {
+  const days = 14;
+  const now = new Date();
+  const data = Array.from({ length: days }).map((_, i) => {
+    const d = new Date(now);
+    d.setDate(d.getDate() - (days - 1 - i));
+    return { date: d.toISOString().slice(0, 10), price: 50 + Math.round(Math.sin(i / 2) * 10 + Math.random() * 5) };
+  });
+  res.json(data);
+});
+
 // Route mounting
 app.use('/auth', authRoutes);
 app.use('/resources', resourceRoutes);

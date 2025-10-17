@@ -22,7 +22,7 @@ const register = async (req, res) => {
     }
 
     // Check if user already exists
-    const existingUser = await User.getProfile(email);
+    const existingUser = await User.getByEmail(email);
     if (existingUser) {
       return res.status(400).json({
         success: false,

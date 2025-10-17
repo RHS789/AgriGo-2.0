@@ -1,5 +1,7 @@
 const supabase = require('../config/supabase');
 
+const supabase = require('../config/supabase');
+
 class User {
   // Create a new user in the database
   static async create(userData) {
@@ -12,7 +14,7 @@ class User {
 
     try {
       // Sign up user with Supabase Auth
-      const { data: authData, error: authError } = await supabase.auth.signUpWithPassword({
+      const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password
       });
@@ -67,6 +69,22 @@ class User {
         token: data.session.access_token,
         refreshToken: data.session.refresh_token
       };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Get user by email
+  static async getByEmail(email) {
+    try {
+      const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('email', email)
+        .single();
+
+      if (error && error.code !== 'PGRST116') throw error;
+      return data || null;
     } catch (error) {
       throw error;
     }
