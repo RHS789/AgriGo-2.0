@@ -60,9 +60,15 @@ class Resource {
 
       const { data, error } = await query;
 
-      if (error) throw error;
+      if (error) {
+        // Handle case where table doesn't exist yet
+        if (error.code === 'PGRST116') {
+          return [];
+        }
+        throw error;
+      }
 
-      return data;
+      return data || [];
     } catch (error) {
       throw error;
     }
