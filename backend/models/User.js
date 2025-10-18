@@ -12,7 +12,7 @@ class User {
 
     try {
       // Sign up user with Supabase Auth
-      const { data: authData, error: authError } = await supabase.auth.signUp({
+      const { data: authData, error: authError } = await supabase.auth.signUpWithPassword({
         email,
         password
       });

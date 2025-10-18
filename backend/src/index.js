@@ -8,6 +8,7 @@ const authRoutes = require('../routes/auth');
 const resourceRoutes = require('../routes/resources');
 const bookingRoutes = require('../routes/bookings');
 const chatRoutes = require('../routes/chats');
+const mlRoutes = require('../routes/ml');
 
 // Initialize Express app
 const app = express();
@@ -85,6 +86,9 @@ app.get('/api/docs', (req, res) => {
         sendMessage: 'POST /chats',
         getMessages: 'GET /chats/:booking_id',
         markAsRead: 'PUT /chats/:booking_id/read'
+      },
+      ml: {
+        getRecommendations: 'GET /ml/recommendations?user=<userId>'
       }
     }
   });
@@ -107,6 +111,7 @@ app.use('/auth', authRoutes);
 app.use('/resources', resourceRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/chats', chatRoutes);
+app.use('/ml', mlRoutes);
 
 // 404 handler
 app.use((req, res) => {
@@ -129,7 +134,7 @@ app.listen(PORT, () => {
 ║  Running on http://localhost:${PORT}            ║
 ║  Environment: ${process.env.NODE_ENV || 'development'}              ║
 ║  Timestamp: ${new Date().toISOString()}       ║
-╚═══════════════════════════════��═══════════════╝
+╚═══════════════════════════════��═════��═════════╝
   `);
 });
 

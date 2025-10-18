@@ -11,11 +11,11 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID || '1:123456789:web:...'
 };
 
-// Initialize Firebase Admin
-if (!admin.apps.length) {
+// Initialize Firebase Admin if not already initialized
+if (!admin.apps || admin.apps.length === 0) {
   admin.initializeApp({
     projectId: firebaseConfig.projectId,
-    databaseURL: `https://${firebaseConfig.projectId}.firebaseio.com`
+    databaseURL: process.env.FIREBASE_DATABASE_URL || `https://${firebaseConfig.projectId}.firebaseio.com`
   });
 }
 

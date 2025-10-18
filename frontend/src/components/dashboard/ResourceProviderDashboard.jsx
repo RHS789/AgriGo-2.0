@@ -8,7 +8,8 @@ import DashboardFooter from './DashboardFooter.jsx';
 import ProviderBookings from './ProviderBookings.jsx';
 import ProviderStats from './ProviderStats.jsx';
 import { Link } from 'react-router-dom';
-import { FiPlus, FiBarChart3, FiCalendar } from 'react-icons/fi';
+import { FiPlus, FiBarChart2, FiCalendar } from 'react-icons/fi';
+import DemoAccountButton from '../../components/common/DemoAccountButton.jsx';
 
 export default function ResourceProviderDashboard() {
   const containerVariants = {
@@ -39,7 +40,7 @@ export default function ResourceProviderDashboard() {
       color: 'emerald',
     },
     {
-      icon: FiBarChart3,
+      icon: FiBarChart2,
       label: 'My Resources',
       href: '/resources',
       color: 'blue',
@@ -91,6 +92,11 @@ export default function ResourceProviderDashboard() {
           );
         })}
       </motion.div>
+
+      {/* Demo Account Button */}
+      <div className="flex justify-center mt-3">
+        <DemoAccountButton role="resource_provider" />
+      </div>
 
       {/* Main Grid - Responsive */}
       <motion.div

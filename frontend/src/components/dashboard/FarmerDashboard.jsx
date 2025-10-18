@@ -10,6 +10,7 @@ import DashboardTopBar from './DashboardTopBar.jsx';
 import DashboardFooter from './DashboardFooter.jsx';
 import { Link } from 'react-router-dom';
 import { FiShoppingCart, FiCalendar, FiMessageSquare } from 'react-icons/fi';
+import DemoAccountButton from '../../components/common/DemoAccountButton.jsx';
 
 export default function FarmerDashboard() {
   const containerVariants = {
@@ -92,6 +93,11 @@ export default function FarmerDashboard() {
           );
         })}
       </motion.div>
+
+      {/* Demo Account Button */}
+      <div className="flex justify-center mt-3">
+        <DemoAccountButton role="farmer" />
+      </div>
 
       {/* Resource Stats - Full Width */}
       <motion.div
